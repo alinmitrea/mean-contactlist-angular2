@@ -5,6 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
+    "prestart": "ng build",
     "start": "node server.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
