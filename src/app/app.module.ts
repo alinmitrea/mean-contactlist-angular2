@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { EditorModule, SharedModule, RadioButtonModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
@@ -18,7 +19,10 @@ import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.c
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    EditorModule,
+    SharedModule,
+    RadioButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
