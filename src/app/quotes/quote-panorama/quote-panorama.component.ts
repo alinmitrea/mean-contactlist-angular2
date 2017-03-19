@@ -9,6 +9,20 @@ export class QuotePanoramaComponent implements OnInit {
   title: string = "七転び八起き “Fall down seven times, get up eight.”";
   textClass: string = "black_text";
 
+  _id?: string;
+  description: string;
+  author: string;
+  mood: Array<string>;
+
+  quotes: any[] = [
+    {
+      "_id": 1,
+      "description": "Fall down seven times, get up eight.",
+      "author": "Japanese saying",
+      "mood": ["grit", "zen"]
+    }
+  ];
+
   selectColor(color: string): void {
     this.textClass = color;
     var contents = "selectedColor" + color;
