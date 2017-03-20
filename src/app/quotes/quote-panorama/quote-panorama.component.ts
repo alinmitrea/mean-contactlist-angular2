@@ -21,6 +21,11 @@ export class QuotePanoramaComponent implements OnInit {
       "_id": "2",
       "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams.",
       "author": "Julia E. Wahl & Wendy Wood"
+    },
+    {
+      "_id": "3",
+      "description": "I’m convinced that about half of what separates the successful entrepreneurs from the non-successful ones is pure perseverance.",
+      "author": "Steve Jobs"
     }
   ];
 
@@ -46,7 +51,7 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentQuote = this.getQuote(this.getRandomInt(1, 2).toString());
+    this.currentQuote = this.getQuote(this.getRandomInt(1, 3).toString());
   }
 
 }
