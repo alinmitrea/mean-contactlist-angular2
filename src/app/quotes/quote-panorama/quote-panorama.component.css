@@ -1,18 +1,21 @@
-.blue_text{
+.blue_text {
   font-size: 30px;
-  color:blue;
+  color: blue;
 }
 
-.black_text{
+.black_text {
   font-size: 30px;
-  color:black;
+  color: black;
 }
 
-.gray_text{
+.gray_text {
   font-size: 30px;
-  color:gray;
+  color: gray;
 }
 
-.header-padding{
-  padding-top: 10%;
+.header-padding {
+  width: 80%;
+  height: 50%;
+  margin: 0 auto;
+  background-color: #FFA500;
 }
