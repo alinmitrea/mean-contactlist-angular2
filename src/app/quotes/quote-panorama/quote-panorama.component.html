@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row header-padding">
-    <div *ngFor="let quote of quotes" class="col jumbotron">
+    <div class="col jumbotron">
       <div class="{{textClass}}">
-        {{quote.description}}
+        {{currentQuote.description}}
       </div>
       <h2 class="featurette-heading">
-        <span class="text-muted">{{quote.author}} </span>
-      </h2>
+        <span class="text-muted">{{currentQuote.author}} </span>
 
+      </h2>
       <!--<p-editor *ngIf="false" [(ngModel)]="title" [style]="{'height':'320px'}"></p-editor>-->
 
 

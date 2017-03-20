@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Quote} from "../quote";
 
 @Component({
   selector: 'app-quote-panorama',
@@ -8,26 +9,28 @@ import { Component, OnInit } from '@angular/core';
 export class QuotePanoramaComponent implements OnInit {
   title: string = "七転び八起き “Fall down seven times, get up eight.”";
   textClass: string = "black_text";
+  currentQuote: Quote;
 
-  _id?: string;
-  description: string;
-  author: string;
-  mood: Array<string>;
-
-  quotes: any[] = [
+  quotes: Quote[] = [
     {
-      "_id": 1,
+      "_id": "1",
       "description": "Fall down seven times, get up eight.",
-      "author": "Japanese saying",
-      "mood": ["grit", "zen"]
+      "author": "Japanese saying"
     },
     {
-      "_id": 2,
+      "_id": "2",
       "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams.",
-      "author": "Julia E. Wahl & Wendy Wood",
-      "mood": ["mindfulness", "now"]
+      "author": "Julia E. Wahl & Wendy Wood"
     }
   ];
+
+  getQuotes(){
+    return this.quotes;
+  }
+
+  getQuote(i: string){
+    return this.getQuotes().find(quote => quote._id === i);
+  }
 
   selectColor(color: string): void {
     this.textClass = color;
@@ -35,9 +38,11 @@ export class QuotePanoramaComponent implements OnInit {
     console.log(contents);
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.currentQuote = this.getQuote("1");
   }
 
 }
