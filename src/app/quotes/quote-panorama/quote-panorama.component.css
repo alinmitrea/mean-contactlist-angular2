@@ -13,9 +13,13 @@
   color: gray;
 }
 
-.header-padding {
+.quote-box {
   width: 80%;
   height: 50%;
   margin: 0 auto;
   background-color: #FFA500;
+}
+
+.parent-box {
+  padding-top: 10%;
 }
