@@ -9,7 +9,9 @@ import {Quote} from "../quote";
 export class QuotePanoramaComponent implements OnInit {
   title: string = "七転び八起き “Fall down seven times, get up eight.”";
   textClass: string = "black_text";
+  backgroundColorClass: string = "nice-red";
   currentQuote: Quote;
+  colors: Array<string> = ["nice-red", "nice-blue", "nice-yellow", "nice-turquoise"];
 
   quotes: Quote[] = [
     {
@@ -51,7 +53,8 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentQuote = this.getQuote(this.getRandomInt(1, 3).toString());
+    this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
+    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
   }
 
 }

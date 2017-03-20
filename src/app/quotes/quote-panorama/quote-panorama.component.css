@@ -4,7 +4,10 @@
     font-size: 25px;
   }
   h2 {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  .parent-box {
+    padding-top: 2%;
   }
 }
 
@@ -14,7 +17,10 @@
     font-size: 30px;
   }
   h2 {
-    font-size: 25px;
+    font-size: 22px;
+  }
+  .parent-box {
+    padding-top: 3%;
   }
 }
 
@@ -24,7 +30,10 @@
     font-size: 35px;
   }
   h1 {
-    font-size: 30px;
+    font-size: 28px;
+  }
+  .parent-box {
+    padding-top: 7%;
   }
 }
 
@@ -36,6 +45,9 @@
   h2 {
     font-size: 35px;
   }
+  .parent-box {
+    padding-top: 7%;
+  }
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
@@ -44,7 +56,11 @@
     font-size: 45px;
   }
   h2 {
-    font-size: 40px;
+    font-size: 30px;
+  }
+
+  .parent-box {
+    padding-top: 10%;
   }
 }
 
@@ -65,9 +81,20 @@
   width: 80%;
   height: 50%;
   margin: 0 auto;
+  border-radius: 15px;
   background-color: #FFA500;
 }
 
-.parent-box {
-  padding-top: 10%;
+.nice-red{
+  background-color: #CC3333;
+}
+
+.nice-blue{
+  background-color: #95CAE4;
+}
+.nice-yellow{
+  background-color: #FFCC33;
+}
+.nice-turquoise{
+  background-color: #40e0d0;
 }
