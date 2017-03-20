@@ -1,27 +1,31 @@
-<div class="container">
-  <div *ngFor="let quote of quotes"    class="{{textClass}}">
-    {{quote.description}}
+<div class="container-fluid">
+  <div class="row header-padding">
+    <div *ngFor="let quote of quotes" class="col jumbotron">
+      <div class="{{textClass}}">
+        {{quote.description}}
+      </div>
+      <h2 class="featurette-heading">
+        <span class="text-muted">{{quote.author}} </span>
+      </h2>
+
+      <!--<p-editor *ngIf="false" [(ngModel)]="title" [style]="{'height':'320px'}"></p-editor>-->
+
+
+      <!--<form *ngIf="false">-->
+        <!--<label class="radio-inline">-->
+          <!--<input type="radio" name="optradio" (click)="selectColor('black_text')">black-->
+        <!--</label>-->
+        <!--<label class="radio-inline">-->
+          <!--<input type="radio" name="optradio" (click)="selectColor('blue_text')">blue-->
+        <!--</label>-->
+        <!--<label class="radio-inline">-->
+          <!--<input type="radio" name="optradio" (click)="selectColor('gray_text')">gray-->
+        <!--</label>-->
+      <!--</form>-->
+
+      <!--<p *ngIf="false">-->
+        <!--{{title}}-->
+      <!--</p>-->
+    </div>
   </div>
-  <h2 class="featurette-heading">
-    <span class="text-muted">it will blow your mind. </span>
-  </h2>
-
-  <p-editor *ngIf="false" [(ngModel)]="title" [style]="{'height':'320px'}"></p-editor>
-
-
-  <form *ngIf="false">
-    <label class="radio-inline">
-      <input type="radio" name="optradio" (click)="selectColor('black_text')">black
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio" (click)="selectColor('blue_text')">blue
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="optradio" (click)="selectColor('gray_text')">gray
-    </label>
-  </form>
-
-  <p *ngIf="false">
-    {{title}}
-  </p>
 </div>

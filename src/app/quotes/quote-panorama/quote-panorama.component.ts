@@ -23,7 +23,7 @@ export class QuotePanoramaComponent implements OnInit {
     },
     {
       "_id": 2,
-      "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams",
+      "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams.",
       "author": "Julia E. Wahl & Wendy Wood",
       "mood": ["mindfulness", "now"]
     }
