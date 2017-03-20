@@ -1,15 +1,16 @@
-.blue_text {
+.quote_font{
   font-size: 30px;
+}
+
+.blue_text {
   color: blue;
 }
 
 .black_text {
-  font-size: 30px;
   color: black;
 }
 
 .gray_text {
-  font-size: 30px;
   color: gray;
 }
 
