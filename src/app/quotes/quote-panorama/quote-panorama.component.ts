@@ -32,6 +32,10 @@ export class QuotePanoramaComponent implements OnInit {
     return this.getQuotes().find(quote => quote._id === i);
   }
 
+  getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
   selectColor(color: string): void {
     this.textClass = color;
     var contents = "selectedColor" + color;
@@ -42,7 +46,7 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentQuote = this.getQuote("1");
+    this.currentQuote = this.getQuote(this.getRandomInt(1, 2).toString());
   }
 
 }
