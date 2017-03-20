@@ -11,7 +11,7 @@ export class QuotePanoramaComponent implements OnInit {
   textClass: string = "black_text";
   backgroundColorClass: string = "nice-red";
   currentQuote: Quote;
-  colors: Array<string> = ["nice-red", "nice-blue", "nice-yellow", "nice-turquoise"];
+  colors: Array<string> = ["nice-grapefruit", "nice-deep-sky-blue", "nice-yellow", "nice-turquoise", "nice-lime-green"];
 
   quotes: Quote[] = [
     {

@@ -85,16 +85,20 @@
   background-color: #FFA500;
 }
 
-.nice-red{
-  background-color: #CC3333;
+.nice-grapefruit{
+  background-color: #DC381F;
 }
 
-.nice-blue{
-  background-color: #95CAE4;
+.nice-deep-sky-blue{
+  background-color: #3BB9FF;
 }
 .nice-yellow{
   background-color: #FFCC33;
 }
 .nice-turquoise{
   background-color: #40e0d0;
+}
+
+.nice-lime-green{
+  background-color: #00FF00;
 }
