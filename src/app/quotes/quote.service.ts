@@ -17,6 +17,14 @@ export class QuoteService {
       .catch(this.handleError);
   }
 
+  // get("/api/quotes")
+  getQuote(i:string): Promise<Quote[]> {
+    return this.http.get(this.quotesUrl + "/quote_id/" + i)
+      .toPromise()
+      .then(response => response.json() as Quote[])
+      .catch(this.handleError);
+  }
+
   // post("/api/quotes")
   createQuote(newQuote: Quote): Promise<Quote> {
     return this.http.post(this.quotesUrl, newQuote)

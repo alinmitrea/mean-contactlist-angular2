@@ -15,41 +15,41 @@ export class QuotePanoramaComponent implements OnInit {
   currentQuote: Quote;
   colors: Array<string> = ["nice-grapefruit", "nice-deep-sky-blue", "nice-yellow", "nice-turquoise", "nice-lime-green"];
 
-  // quotes: Quote[]
-  // selectedQuote: Quote
+  quotes: Quote[]
+  selectedQuote: Quote
 
   constructor(private quoteService: QuoteService) { }
 
   ngOnInit() {
-    // this.quoteService
-    //   .getQuotes()
-    //   .then((quotes: Quote[]) => {
-    //     this.quotes = quotes.map((quote) => {
-    //       return quote;
-    //     });
-    //   });
-
-    this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
+    this.quoteService
+      .getQuotes()
+      .then((quotes: Quote[]) => {
+        this.quotes = quotes.map((quote) => {
+          return quote;
+        });
+      });
+    //
+    // this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
   }
 
-  quotes: Quote[] = [
-    {
-      "_id": "1",
-      "description": "Fall down seven times, get up eight.",
-      "author": "Japanese saying"
-    },
-    {
-      "_id": "2",
-      "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams.",
-      "author": "Julia E. Wahl & Wendy Wood"
-    },
-    {
-      "_id": "3",
-      "description": "I’m convinced that about half of what separates the successful entrepreneurs from the non-successful ones is pure perseverance.",
-      "author": "Steve Jobs"
-    }
-  ];
+  // quotes: Quote[] = [
+  //   {
+  //     "_id": "1",
+  //     "description": "Fall down seven times, get up eight.",
+  //     "author": "Japanese saying"
+  //   },
+  //   {
+  //     "_id": "2",
+  //     "description": "Mindfulness is the ability to notice where we are, physically and mentally, and bring our attention back to what is rather than being in our fantasies, fears, hopes or dreams.",
+  //     "author": "Julia E. Wahl & Wendy Wood"
+  //   },
+  //   {
+  //     "_id": "3",
+  //     "description": "I’m convinced that about half of what separates the successful entrepreneurs from the non-successful ones is pure perseverance.",
+  //     "author": "Steve Jobs"
+  //   }
+  // ];
 
   getQuotes(){
     return this.quotes;
