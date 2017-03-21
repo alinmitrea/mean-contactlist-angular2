@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Quote} from "../quote";
+import { Quote} from "../quote";
+import { QuoteService } from '../quote.service';
 
 @Component({
   selector: 'app-quote-panorama',
   templateUrl: './quote-panorama.component.html',
-  styleUrls: ['./quote-panorama.component.css']
+  styleUrls: ['./quote-panorama.component.css'],
+  providers: [QuoteService]
 })
 export class QuotePanoramaComponent implements OnInit {
   title: string = "七転び八起き “Fall down seven times, get up eight.”";
@@ -12,6 +14,24 @@ export class QuotePanoramaComponent implements OnInit {
   backgroundColorClass: string = "nice-red";
   currentQuote: Quote;
   colors: Array<string> = ["nice-grapefruit", "nice-deep-sky-blue", "nice-yellow", "nice-turquoise", "nice-lime-green"];
+
+  // quotes: Quote[]
+  // selectedQuote: Quote
+
+  constructor(private quoteService: QuoteService) { }
+
+  ngOnInit() {
+    // this.quoteService
+    //   .getQuotes()
+    //   .then((quotes: Quote[]) => {
+    //     this.quotes = quotes.map((quote) => {
+    //       return quote;
+    //     });
+    //   });
+
+    this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
+    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
+  }
 
   quotes: Quote[] = [
     {
@@ -40,21 +60,13 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
   selectColor(color: string): void {
     this.textClass = color;
     var contents = "selectedColor" + color;
     console.log(contents);
-  }
-
-  constructor() {
-  }
-
-  ngOnInit() {
-    this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
-    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
   }
 
 }
