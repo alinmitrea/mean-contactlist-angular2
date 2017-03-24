@@ -1,31 +1,12 @@
 <div class="container-fluid parent-box">
-  <div class="row quote-box {{backgroundColorClass}}">
-    <!--<div class="col jumbotron">-->
-      <div *ngFor="let currentQuote of quotes" class="col jumbotron">
+  <div class="row quote-box {{backgroundColorClass}}" (click)="setNewQuote()" *ngIf="currentQuote.description != 'loading'">
+    <div class="col jumbotron">
       <h1 class="{{textClass}}">
         {{currentQuote.description}}
       </h1>
       <h2 class="featurette-heading">
         <span class="text-muted">{{currentQuote.author}} </span>
       </h2>
-      <!--<p-editor *ngIf="false" [(ngModel)]="title" [style]="{'height':'320px'}"></p-editor>-->
-
-
-      <!--<form *ngIf="false">-->
-      <!--<label class="radio-inline">-->
-      <!--<input type="radio" name="optradio" (click)="selectColor('black_text')">black-->
-      <!--</label>-->
-      <!--<label class="radio-inline">-->
-      <!--<input type="radio" name="optradio" (click)="selectColor('blue_text')">blue-->
-      <!--</label>-->
-      <!--<label class="radio-inline">-->
-      <!--<input type="radio" name="optradio" (click)="selectColor('gray_text')">gray-->
-      <!--</label>-->
-      <!--</form>-->
-
-      <!--<p *ngIf="false">-->
-      <!--{{title}}-->
-      <!--</p>-->
     </div>
   </div>
 

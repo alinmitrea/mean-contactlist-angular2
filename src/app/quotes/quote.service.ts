@@ -17,13 +17,24 @@ export class QuoteService {
       .catch(this.handleError);
   }
 
-  // get("/api/quotes")
-  getQuote(i:string): Promise<Quote[]> {
-    return this.http.get(this.quotesUrl + "/quote_id/" + i)
+  // get("/api/quotes/quote_id/:id")
+  getQuote(i: String): Promise<String> {
+    return this.http.get('/api/quotes/quote_id/2')
       .toPromise()
-      .then(response => response.json() as Quote[])
+      .then(response => response.json() as Quote)
       .catch(this.handleError);
   }
+
+  // get("/api/contacts/:id") endpoint not used by Angular app
+  //
+  // // delete("/api/contacts/:id")
+  // deleteContact(delContactId: String): Promise<String> {
+  //   return this.http.delete(this.contactsUrl + '/' + delContactId)
+  //     .toPromise()
+  //     .then(response => response.json() as String)
+  //     .catch(this.handleError);
+  // }
+
 
   // post("/api/quotes")
   createQuote(newQuote: Quote): Promise<Quote> {
