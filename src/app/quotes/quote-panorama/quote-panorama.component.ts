@@ -55,7 +55,7 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   setNewQuote(): void {
-    this.currentQuote = this.getQuote(this.getRandomInt(1, this.quotes.length).toString());
+    this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
     var contents = "new quote set";
     console.log(contents + this.currentQuote.description);
