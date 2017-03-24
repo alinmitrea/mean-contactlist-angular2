@@ -14,26 +14,22 @@ export class QuotePanoramaComponent implements OnInit {
   currentQuote: Quote = {  _id: "ss",  quote_id: "999",  description: "loading", author: "loading"};
   colors: Array<string> = ["nice-grapefruit", "nice-deep-sky-blue", "nice-yellow", "nice-turquoise", "nice-lime-green"];
   quotes: Quote[];
+  quoteSample: Quote;
 
   constructor(private quoteService: QuoteService) { }
 
   ngOnInit() {
     this.quoteService
-      .getQuotes()
+      .getDBQuotes()
       .then((quotes: Quote[]) => {
         this.quotes = quotes.map((quote) => {
           var contents = "quotes initialized";
           console.log(contents);
           return quote;
-        });
-        this.setNewQuote();
+        })
       });
-    // this.quoteService
-    //   .getQuote("2")
-    //   .then((quotes: Quote) => {
-    //     this.selectedQuote = quotes;
-    //   })
-    // ;
+
+    this.setNewQuote();
   }
 
   getQuotes(){
@@ -55,10 +51,23 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   setNewQuote(): void {
-    this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
+    //this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    var contents = "new quote set";
+
+
+    this.getRandomQuote();
+    var contents = "quoteSample";
     console.log(contents + this.currentQuote.description);
+
+  }
+
+  private getRandomQuote() {
+    this.quoteService
+      .getDBQuote(this.getRandomInt(1, 70000).toString())
+      .then((quotes: Quote) => {
+        this.currentQuote = quotes;
+      })
+    ;
   }
 
 }

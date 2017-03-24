@@ -4,6 +4,7 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
+var BIG_QUOTES_COLLECTION = "bigquotes";
 var QUOTES_COLLECTION = "quotes";
 
 var app = express();
@@ -196,8 +197,9 @@ app.get("/api/quotes/:id", function(req, res) {
   });
 });
 
+//TODO: change here BIG_QUOTES_COLLECTION with QUOTES_COLLECTION
 app.get("/api/quotes/quote_id/:quote_id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
+  db.collection(BIG_QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get category");
     } else {

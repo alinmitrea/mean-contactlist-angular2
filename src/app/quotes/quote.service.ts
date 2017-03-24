@@ -10,7 +10,7 @@ export class QuoteService {
   constructor (private http: Http) {}
 
   // get("/api/quotes")
-  getQuotes(): Promise<Quote[]> {
+  getDBQuotes(): Promise<Quote[]> {
     return this.http.get(this.quotesUrl)
       .toPromise()
       .then(response => response.json() as Quote[])
@@ -18,8 +18,8 @@ export class QuoteService {
   }
 
   // get("/api/quotes/quote_id/:id")
-  getQuote(i: String): Promise<String> {
-    return this.http.get('/api/quotes/quote_id/2')
+  getDBQuote(i: String): Promise<Quote> {
+    return this.http.get('/api/quotes/quote_id/' + i)
       .toPromise()
       .then(response => response.json() as Quote)
       .catch(this.handleError);
