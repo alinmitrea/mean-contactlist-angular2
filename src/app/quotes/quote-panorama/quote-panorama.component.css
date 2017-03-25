@@ -85,6 +85,10 @@
   background-color: #FFA500;
 }
 
+.quote-category{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-style: oblique;
+}
 .nice-grapefruit{
   background-color: #DC381F;
 }
