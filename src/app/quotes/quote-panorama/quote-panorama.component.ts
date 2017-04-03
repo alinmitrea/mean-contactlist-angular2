@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quote} from '../quote';
 import { QuoteService } from '../quote.service';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-quote-panorama',
@@ -16,7 +17,8 @@ export class QuotePanoramaComponent implements OnInit {
   quotes: Quote[];
   quoteSample: Quote;
 
-  constructor(private quoteService: QuoteService) { }
+  constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
+  }
 
   ngOnInit() {
     this.quoteService
@@ -53,7 +55,7 @@ export class QuotePanoramaComponent implements OnInit {
   setNewQuote(): void {
     //this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-
+    this.sharedService.publishData(this.backgroundColorClass + "-text");
 
     this.getRandomQuote();
     var contents = "quoteSample";

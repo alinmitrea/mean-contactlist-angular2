@@ -33,7 +33,7 @@
     font-size: 28px;
   }
   .parent-box {
-    padding-top: 7%;
+    padding-top: 4%;
   }
 }
 
@@ -46,7 +46,7 @@
     font-size: 35px;
   }
   .parent-box {
-    padding-top: 7%;
+    padding-top: 5%;
   }
 }
 
@@ -60,7 +60,7 @@
   }
 
   .parent-box {
-    padding-top: 10%;
+    padding-top: 6%;
   }
 }
 
@@ -89,20 +89,26 @@
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-style: oblique;
 }
+
 .nice-grapefruit{
   background-color: #DC381F;
 }
-
 .nice-deep-sky-blue{
   background-color: #3BB9FF;
 }
+
 .nice-yellow{
   background-color: #FFCC33;
 }
+
 .nice-turquoise{
   background-color: #40e0d0;
 }
 
 .nice-lime-green{
-  background-color: #00FF00;
+  background-color: forestgreen;
+}
+
+.nice-red{
+  background-color: orangered;
 }

@@ -9,6 +9,7 @@ import { ContactDetailsComponent } from './contacts/contact-details/contact-deta
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.component';
 import { HeaderComponent } from './header/header.component';
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { HeaderComponent } from './header/header.component';
     SharedModule,
     RadioButtonModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
