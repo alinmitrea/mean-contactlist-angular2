@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactDetailsComponent,
     ContactListComponent,
-    QuotePanoramaComponent
+    QuotePanoramaComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

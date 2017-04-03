@@ -19,6 +19,7 @@ var db;
 
 //TODO: for local development add here the direct link do mongo db on mlab
 // Connect to the database before starting the application server.
+// process.env.MONGODB_URI = "mongodb://127.0.0.1:27017/admin";
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
