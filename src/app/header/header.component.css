@@ -1,1 +1,44 @@
-/*init*/
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 300px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .logo-size {
+    font-size: 25px;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .logo-size {
+    font-size: 30px;
+  }
+}
+
+.logo{
+  color: #3c763d;
+}
+
+.logo-font {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+
