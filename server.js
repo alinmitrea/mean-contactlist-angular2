@@ -3,8 +3,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var BIG_QUOTES_COLLECTION = "bigquotes";
-var QUOTES_COLLECTION = "quotes";
+var QUOTES_COLLECTION = "bigquotes";
 
 var app = express();
 app.use(bodyParser.json());
@@ -96,7 +95,7 @@ app.get("/api/quotes/:id", function(req, res) {
 
 //TODO: change here BIG_QUOTES_COLLECTION with QUOTES_COLLECTION
 app.get("/api/quotes/quote_id/:quote_id", function(req, res) {
-  db.collection(BIG_QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
+  db.collection(QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get category");
     } else {
