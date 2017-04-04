@@ -5,8 +5,6 @@ import { HttpModule } from '@angular/http';
 import { EditorModule, SharedModule, RadioButtonModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
-import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
-import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedService } from './shared.service';
@@ -14,8 +12,6 @@ import { SharedService } from './shared.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactDetailsComponent,
-    ContactListComponent,
     QuotePanoramaComponent,
     HeaderComponent
   ],
