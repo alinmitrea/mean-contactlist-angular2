@@ -14,11 +14,16 @@
 
 <div>
   <div id="wrapper">
+    <div class="quote-category">Related Quotes</div>
+    <p> </p>
     <div id="columns">
       <div class="pin" *ngFor="let quote of quotes">
-        <p>
+        <div class="{{textClass}}">
           {{quote.description}}
-        </p>
+        </div>
+        <div class="text-muted quote-category">
+          {{quote.author}}#{{quote.category}}
+        </div>
       </div>
     </div>
   </div>
