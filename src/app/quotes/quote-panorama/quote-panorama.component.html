@@ -12,8 +12,18 @@
   </div>
 </div>
 
+<div>
+  <div id="wrapper">
+    <div id="columns">
+      <div class="pin" *ngFor="let quote of quotes">
+        <p>
+          {{quote.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!--<div *ngFor="let quote of quotes"    class="{{textClass}}">-->
-  <!--{{quote.description}}-->
-<!--</div>-->
+
+
 
