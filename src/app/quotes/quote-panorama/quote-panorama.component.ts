@@ -10,10 +10,10 @@ import { SharedService } from '../../shared.service';
   providers: [QuoteService]
 })
 export class QuotePanoramaComponent implements OnInit {
-  textClass: string = "black_text";
-  backgroundColorClass: string = "nice-red";
-  currentQuote: Quote = {  _id: "ss",  quote_id: "999",  description: "loading", author: "loading"};
-  colors: Array<string> = ["nice-grapefruit", "nice-deep-sky-blue", "nice-yellow", "nice-turquoise", "nice-lime-green"];
+  textClass = 'black_text';
+  backgroundColorClass = 'nice-red';
+  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading'};
+  colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   quotes: Quote[];
   quoteSample: Quote;
 
@@ -25,20 +25,20 @@ export class QuotePanoramaComponent implements OnInit {
       .getDBQuotes()
       .then((quotes: Quote[]) => {
         this.quotes = quotes.map((quote) => {
-          var contents = "quotes initialized";
-          console.log(contents);
+          // const contents = 'quotes initialized';
+          // console.log(contents);
           return quote;
-        })
+        });
       });
 
     this.setNewQuote();
   }
 
-  getQuotes(){
+  getQuotes() {
     return this.quotes;
   }
 
-  getQuote(i: string){
+  getQuote(i: string) {
     return this.getQuotes().find(quote => quote.quote_id === i);
   }
 
@@ -48,17 +48,17 @@ export class QuotePanoramaComponent implements OnInit {
 
   selectColor(color: string): void {
     this.textClass = color;
-    var contents = "selectedColor" + color;
+    const contents = 'selectedColor' + color;
     console.log(contents);
   }
 
   setNewQuote(): void {
-    //this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
+    // this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    this.sharedService.publishData(this.backgroundColorClass + "-text");
+    this.sharedService.publishData(this.backgroundColorClass + '-text');
 
     this.getRandomQuote();
-    var contents = "quoteSample";
+    const contents = 'quoteSample';
     console.log(contents + this.currentQuote.description);
 
   }

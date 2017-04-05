@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class QuoteService {
   private quotesUrl = '/api/quotes';
+  private oneQuoteUrl = '/api/quotes/quote_id/';
 
   constructor (private http: Http) {}
 
@@ -19,22 +20,11 @@ export class QuoteService {
 
   // get("/api/quotes/quote_id/:id")
   getDBQuote(i: String): Promise<Quote> {
-    return this.http.get('/api/quotes/quote_id/' + i)
+    return this.http.get(this.oneQuoteUrl + i)
       .toPromise()
       .then(response => response.json() as Quote)
       .catch(this.handleError);
   }
-
-  // get("/api/contacts/:id") endpoint not used by Angular app
-  //
-  // // delete("/api/contacts/:id")
-  // deleteContact(delContactId: String): Promise<String> {
-  //   return this.http.delete(this.contactsUrl + '/' + delContactId)
-  //     .toPromise()
-  //     .then(response => response.json() as String)
-  //     .catch(this.handleError);
-  // }
-
 
   // post("/api/quotes")
   createQuote(newQuote: Quote): Promise<Quote> {
@@ -43,8 +33,6 @@ export class QuoteService {
       .then(response => response.json() as Quote)
       .catch(this.handleError);
   }
-
-  // get("/api/quotes/:id") endpoint not used by Angular app
 
   // delete("/api/quotes/:id")
   deleteQuote(delQuoteId: String): Promise<String> {
@@ -56,7 +44,7 @@ export class QuoteService {
 
   // put("/api/quotes/:id")
   updateQuote(putQuote: Quote): Promise<Quote> {
-    var putUrl = this.quotesUrl + '/' + putQuote._id;
+    const putUrl = this.quotesUrl + '/' + putQuote._id;
     return this.http.put(putUrl, putQuote)
       .toPromise()
       .then(response => response.json() as Quote)
