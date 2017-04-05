@@ -18,7 +18,7 @@ var db;
 //TODO: for local development add here the direct link do mongo db on mlab
 //process.env.MONGODB_URI="mongodb://heroku_phwp8r62:e8sr5b9dq14a06l8a7avc9vimt@ds119370.mlab.com:19370/heroku_phwp8r62";
 // Connect to the database before starting the application server.
-//process.env.MONGODB_URI = "mongodb://127.0.0.1:27017/admin";
+process.env.MONGODB_URI = "mongodb://127.0.0.1:27017/admin";
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
@@ -50,7 +50,7 @@ function handleError(res, reason, message, code) {
  */
 
 app.get("/api/quotes", function(req, res) {
-  db.collection(QUOTES_COLLECTION).find({}).limit(2).toArray(function(err, docs) {
+  db.collection(QUOTES_COLLECTION).find({}).limit(10).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get quotes.");
     } else {
@@ -77,6 +77,17 @@ app.post("/api/quotes", function(req, res) {
 });
 
 
+app.get("/api/quotes/goto/:position/limit/:id", function(req, res) {
+  db.collection(QUOTES_COLLECTION).find({}).skip(parseInt(req.params.position)).limit(parseInt(req.params.id)).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get quotes.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
+
 /*  "/api/quotes/:id"
  *    GET: find quote by id
  *    PUT: update quote by id
@@ -93,7 +104,6 @@ app.get("/api/quotes/:id", function(req, res) {
   });
 });
 
-//TODO: change here BIG_QUOTES_COLLECTION with QUOTES_COLLECTION
 app.get("/api/quotes/quote_id/:quote_id", function(req, res) {
   db.collection(QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
     if (err) {
