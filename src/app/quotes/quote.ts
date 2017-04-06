@@ -3,4 +3,5 @@ export class Quote {
   quote_id: string;
   description: string;
   author: string;
+  category: string;
 }

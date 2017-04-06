@@ -12,7 +12,7 @@ import { SharedService } from '../../shared.service';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading'};
+  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading', category: 'age' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   quotes: Quote[];
   quoteSample: Quote;
@@ -21,15 +21,15 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.quoteService
-      .getDBQuotes()
-      .then((quotes: Quote[]) => {
-        this.quotes = quotes.map((quote) => {
-          // const contents = 'quotes initialized';
-          // console.log(contents);
-          return quote;
-        });
-      });
+    // this.quoteService
+    //   .getDBQuotes()
+    //   .then((quotes: Quote[]) => {
+    //     this.quotes = quotes.map((quote) => {
+    //       // const contents = 'quotes initialized';
+    //       // console.log(contents);
+    //       return quote;
+    //     });
+    //   });
 
     this.setNewQuote();
   }
@@ -58,8 +58,8 @@ export class QuotePanoramaComponent implements OnInit {
     this.sharedService.publishData(this.backgroundColorClass + '-text');
 
     this.getRandomQuote();
-    const contents = 'quoteSample';
-    console.log(contents + this.currentQuote.description);
+    // const contents = 'quoteSample';
+    // console.log(contents + this.currentQuote.description);
 
   }
 
@@ -68,8 +68,17 @@ export class QuotePanoramaComponent implements OnInit {
       .getDBQuote(this.getRandomInt(1, 70000).toString())
       .then((quotes: Quote) => {
         this.currentQuote = quotes;
+        this.getQuotesByCategory(this.currentQuote.category);
       })
     ;
+  }
+
+  private getQuotesByCategory(category: string) {
+    this.quoteService
+      .getDBQuoteByCategory(category.toString())
+      .then((quotes: Quote[]) => {
+        this.quotes = quotes;
+      });
   }
 
 }

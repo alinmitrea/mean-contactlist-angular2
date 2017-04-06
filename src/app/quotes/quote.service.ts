@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class QuoteService {
   private quotesUrl = '/api/quotes';
   private oneQuoteUrl = '/api/quotes/quote_id/';
+  private categoryQuoteUrl = '/api/quotes/category/';
 
   constructor (private http: Http) {}
 
@@ -17,7 +18,13 @@ export class QuoteService {
       .then(response => response.json() as Quote[])
       .catch(this.handleError);
   }
-
+  // get("/api/quotes/category/:category")
+  getDBQuoteByCategory(category: String): Promise<Quote[]> {
+    return this.http.get(this.categoryQuoteUrl + category)
+      .toPromise()
+      .then(response => response.json() as Quote[])
+      .catch(this.handleError);
+  }
   // get("/api/quotes/quote_id/:id")
   getDBQuote(i: String): Promise<Quote> {
     return this.http.get(this.oneQuoteUrl + i)
