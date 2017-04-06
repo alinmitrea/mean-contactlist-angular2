@@ -87,6 +87,16 @@ app.get("/api/quotes/goto/:position/limit/:id", function(req, res) {
 });
 
 
+app.get("/api/quotes/category/:categ", function(req, res) {
+  db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).limit(20).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get quotes.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+
 /*  "/api/quotes/:id"
  *    GET: find quote by id
  *    PUT: update quote by id
