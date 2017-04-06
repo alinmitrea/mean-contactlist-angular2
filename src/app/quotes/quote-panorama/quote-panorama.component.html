@@ -18,7 +18,7 @@
     <p> </p>
     <div id="columns">
       <div class="pin" *ngFor="let quote of quotes">
-        <div class="{{textClass}}">
+        <div class="{{textClass}}" (click)='changeQuote(quote.quote_id)'>
           {{quote.description}}
         </div>
         <div class="text-muted quote-category">

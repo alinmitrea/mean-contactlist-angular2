@@ -81,4 +81,9 @@ export class QuotePanoramaComponent implements OnInit {
       });
   }
 
+  private changeQuote(id:number){
+    const contents = 'changeQuote';
+    this.currentQuote = this.getQuote(id.toString());
+    console.log(contents + ':' + id);
+  }
 }
