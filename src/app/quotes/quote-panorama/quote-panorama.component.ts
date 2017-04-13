@@ -6,7 +6,7 @@ import { SharedService } from '../../shared.service';
 @Component({
   selector: 'app-quote-panorama',
   templateUrl: './quote-panorama.component.html',
-  styleUrls: ['./quote-panorama.component.css'],
+  styleUrls: ['./quote-panorama.component.css', './quote-panorama.card-style.css'],
   providers: [QuoteService]
 })
 export class QuotePanoramaComponent implements OnInit {
