@@ -17,18 +17,18 @@
 
     <div class="container container-table">
       <div class="row vertical-center-row">
-        <h4 class="text-center col-md-4 col-md-offset-4 text-muted">Related Quotes</h4>
+        <h4 class="text-center col-md-4 col-md-offset-4 text-muted">other #{{currentQuote.category}} quotes</h4>
       </div>
     </div>
 
     <div id="cards">
-      <div *ngFor="let quote of quotes">
+      <div *ngFor="let quote of quotes" (click)='changeQuote(quote.quote_id)'>
         <figure>
-          <div class="{{textClass}}" (click)='changeQuote(quote.quote_id)'>
+          <div class="{{textClass}}">
             {{quote.description}}
           </div>
           <div class="text-muted quote-category">
-            {{quote.author}}#{{quote.category}}
+            <div>{{quote.author}}</div>
           </div>
         </figure>
       </div>
