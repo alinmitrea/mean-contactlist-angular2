@@ -15,22 +15,11 @@ export class QuotePanoramaComponent implements OnInit {
   currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading', category: 'age' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   quotes: Quote[];
-  quoteSample: Quote;
 
   constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
   }
 
   ngOnInit() {
-    // this.quoteService
-    //   .getDBQuotes()
-    //   .then((quotes: Quote[]) => {
-    //     this.quotes = quotes.map((quote) => {
-    //       // const contents = 'quotes initialized';
-    //       // console.log(contents);
-    //       return quote;
-    //     });
-    //   });
-
     this.setNewQuote();
   }
 
@@ -44,7 +33,7 @@ export class QuotePanoramaComponent implements OnInit {
 
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  }
 
   selectColor(color: string): void {
     this.textClass = color;
@@ -57,34 +46,42 @@ export class QuotePanoramaComponent implements OnInit {
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
     this.sharedService.publishData(this.backgroundColorClass + '-text');
 
-    this.getRandomQuote();
+    this.getRandomQuote(true);
     // const contents = 'quoteSample';
     // console.log(contents + this.currentQuote.description);
 
   }
 
-  private getRandomQuote() {
+  private getRandomQuote(reset: boolean) {
     this.quoteService
       .getDBQuote(this.getRandomInt(1, 70000).toString())
       .then((quotes: Quote) => {
         this.currentQuote = quotes;
-        this.getQuotesByCategory(this.currentQuote.category);
+        this.getQuotesByCategory(this.currentQuote.category, reset);
       })
     ;
   }
 
-  private getQuotesByCategory(category: string) {
+  private getQuotesByCategory(category: string, reset: boolean) {
     this.quoteService
       .getDBQuoteByCategory(category.toString())
       .then((quotes: Quote[]) => {
-        this.quotes = quotes;
-      });
+        if (reset){
+          this.quotes = quotes;
+        }
+        else
+          if (typeof this.quotes !== 'undefined'){
+            quotes.forEach((item, index) => {
+              this.quotes.push(item)
+            })
+          } else{
+            this.quotes = quotes;
+          }
+      })
   }
 
   private changeQuote(id:number){
     this.currentQuote = this.getQuote(id.toString());
     window.scrollTo(0,0);
-    // const contents = 'changeQuote';
-    // console.log(contents + ':' + id);
   }
 }

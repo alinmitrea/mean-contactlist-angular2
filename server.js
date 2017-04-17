@@ -88,13 +88,24 @@ app.get("/api/quotes/goto/:position/limit/:id", function(req, res) {
 
 
 app.get("/api/quotes/category/:categ", function(req, res) {
-  db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).limit(20).toArray(function(err, docs) {
+  var countResults = 10;
+  var limitResults = 10;
+  db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).count(function(err, count) {
     if (err) {
-      handleError(res, err.message, "Failed to get quotes.");
-    } else {
-      res.status(200).json(docs);
+      handleError(res, err.message, "Failed to count quotes.");
+    }
+    else{
+      countResults = count;
+      db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).skip(getRandomInt(1, countResults - limitResults)).limit(limitResults).toArray(function(err, docs) {
+        if (err) {
+          handleError(res, err.message, "Failed to get quotes.");
+        } else {
+          res.status(200).json(docs);
+        }
+      });
     }
   });
+  //console.log("outer count: " + countResults);
 });
 
 /*  "/api/quotes/:id"
@@ -156,3 +167,7 @@ app.get("/api/quotes/:id", function(req, res) {
     }
   });
 });
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
