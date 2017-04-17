@@ -12,9 +12,11 @@ import { SharedService } from '../../shared.service';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading', category: 'age' };
+  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading', category: 'age', status:'old' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
+  fakeParse: Array<string> = ['one', 'two'];
   quotes: Quote[];
+  status: string='new';
 
   constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
   }
@@ -71,7 +73,9 @@ export class QuotePanoramaComponent implements OnInit {
         }
         else
           if (typeof this.quotes !== 'undefined'){
+            this.status = this.status + '+';
             quotes.forEach((item, index) => {
+              item.status = this.status;
               this.quotes.push(item)
             })
           } else{

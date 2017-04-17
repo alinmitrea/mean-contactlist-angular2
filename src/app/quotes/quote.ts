@@ -4,4 +4,5 @@ export class Quote {
   description: string;
   author: string;
   category: string;
+  status: string;
 }
