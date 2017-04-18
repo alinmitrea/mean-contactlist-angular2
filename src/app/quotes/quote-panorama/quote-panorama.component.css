@@ -105,7 +105,7 @@
 }
 
 .nice-grapefruit{
-  background-color: #DC381F;
+  background-color: #DC381F
 }
 .nice-deep-sky-blue{
   background-color: #3BB9FF;
@@ -130,5 +130,4 @@
 .dot{
   width: 7px;
   height: 7px;
-  background: blue;
 }

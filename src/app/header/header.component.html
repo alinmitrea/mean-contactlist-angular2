@@ -1,5 +1,5 @@
-<div class="container">
-  <nav class="navbar navbar-default">
+<div class="container header">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -10,12 +10,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="glyphicon glyphicon-leaf logo logo-size {{colorClass}}"></a>
-        <a class="navbar-brand logo logo-size logo-font {{colorClass}}" href="#">LazyQuote</a>
+        <a class="glyphicon glyphicon-leaf logo logo-size {{colorClass}}" [routerLink]="['/home']"></a>
+        <a class="navbar-brand logo logo-size logo-font {{colorClass}}" [routerLink]="['/home']">LazyQuote</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="active"><a [routerLink]="['/home']"> Home <span class="sr-only">(current)</span></a></li>
+          <li><a [routerLink]="['/categories']"> Categories <span class="sr-only"></span></a></li>
+          <li><a href="#"> Favorites <span class="sr-only"></span></a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

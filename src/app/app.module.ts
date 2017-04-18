@@ -3,17 +3,20 @@ import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { EditorModule, SharedModule, RadioButtonModule } from 'primeng/primeng';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedService } from './shared.service';
+import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuotePanoramaComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuoteCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,13 @@ import { SharedService } from './shared.service';
     HttpModule,
     EditorModule,
     SharedModule,
-    RadioButtonModule
+    RadioButtonModule,
+    RouterModule.forRoot([
+      { path: 'home', component: QuotePanoramaComponent },
+      { path: 'categories', component: QuoteCategoryComponent },
+      { path: '', redirectTo: 'home', pathMatch:'full'},
+      { path: '**', redirectTo: '', pathMatch:'full'}
+    ])
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

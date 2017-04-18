@@ -35,6 +35,7 @@
 
 .logo{
   color: #3c763d;
+  padding-right: 10px;
 }
 
 .logo-font {
@@ -63,4 +64,8 @@
 
 .nice-red-text{
   color: orangered;
+}
+
+.header{
+  padding-bottom: 7%;
 }
