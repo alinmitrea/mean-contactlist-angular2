@@ -35,6 +35,11 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   });
 });
 
+// TODO: this works to redirect but it's not effiecient? how to do it using Angular? check app.module.ts
+app.get('/categories', function(req, res) {
+  res.sendFile(distDir + '/index.html')
+});
+
 // CONTACTS API ROUTES BELOW
 
 // Generic error handler used by all endpoints.
