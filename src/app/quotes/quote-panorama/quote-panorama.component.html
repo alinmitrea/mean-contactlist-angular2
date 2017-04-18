@@ -24,7 +24,7 @@
     <div id="cards" *ngFor="let fake of fakeParse">
       <div *ngFor="let quote of quotes" (click)='changeQuote(quote.quote_id)'>
         <figure *ngIf="(quote.status!=status && fake=='one') || (quote.status==status && fake=='two')">
-          <div *ngIf="quote.status==status" class="dot"></div>
+          <div *ngIf="quote.status==status" class="dot {{backgroundColorClass}}"></div>
           <div class="{{textClass}}">
             {{quote.description}}
           </div>
