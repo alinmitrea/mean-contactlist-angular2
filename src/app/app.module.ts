@@ -28,7 +28,7 @@ import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.c
     RouterModule.forRoot([
       { path: '', component: QuotePanoramaComponent },
       { path: 'categories', component: QuoteCategoryComponent },
-      { path: '**', redirectTo: '', pathMatch:'full'}
+      { path: '**', redirectTo: '', pathMatch: 'full'}
     ])
   ],
   providers: [SharedService],
