@@ -15,7 +15,7 @@ app.use(express.static(distDir));
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
-//TODO: for local development add here the direct link do mongo db on mlab
+//TODO: for local development add here the direct link do mongo db on mlab fdf
 // Connect to the database before starting the application server.
 //process.env.MONGODB_URI = "mongodb://127.0.0.1:27017/admin";
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
