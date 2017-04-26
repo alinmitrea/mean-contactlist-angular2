@@ -36,7 +36,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
 });
 
 // TODO: this works to redirect but it's not effiecient? how to do it using Angular? check app.module.ts
-app.get('/categories', function(req, res) {
+app.get('/categories', function (req, res) {
   res.sendFile(distDir + '/index.html')
 });
 
@@ -53,8 +53,8 @@ function handleError(res, reason, message, code) {
  *    POST: creates a new quote
  */
 
-app.get("/api/quotes", function(req, res) {
-  db.collection(QUOTES_COLLECTION).find({}).limit(10).toArray(function(err, docs) {
+app.get("/api/quotes", function (req, res) {
+  db.collection(QUOTES_COLLECTION).find({}).limit(10).toArray(function (err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get quotes.");
     } else {
@@ -63,7 +63,7 @@ app.get("/api/quotes", function(req, res) {
   });
 });
 
-app.post("/api/quotes", function(req, res) {
+app.post("/api/quotes", function (req, res) {
   var newContact = req.body;
   newContact.createDate = new Date();
 
@@ -71,7 +71,7 @@ app.post("/api/quotes", function(req, res) {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
   }
 
-  db.collection(QUOTES_COLLECTION).insertOne(newContact, function(err, doc) {
+  db.collection(QUOTES_COLLECTION).insertOne(newContact, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new quote.");
     } else {
@@ -81,8 +81,8 @@ app.post("/api/quotes", function(req, res) {
 });
 
 
-app.get("/api/quotes/goto/:position/limit/:id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).find({}).skip(parseInt(req.params.position)).limit(parseInt(req.params.id)).toArray(function(err, docs) {
+app.get("/api/quotes/goto/:position/limit/:id", function (req, res) {
+  db.collection(QUOTES_COLLECTION).find({}).skip(parseInt(req.params.position)).limit(parseInt(req.params.id)).toArray(function (err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get quotes.");
     } else {
@@ -92,16 +92,16 @@ app.get("/api/quotes/goto/:position/limit/:id", function(req, res) {
 });
 
 
-app.get("/api/quotes/category/:categ", function(req, res) {
+app.get("/api/quotes/category/:categ", function (req, res) {
   var countResults = 10;
   var limitResults = 10;
-  db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).count(function(err, count) {
+  db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).count(function (err, count) {
     if (err) {
       handleError(res, err.message, "Failed to count quotes.");
     }
-    else{
+    else {
       countResults = count;
-      db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).skip(getRandomInt(1, countResults - limitResults)).limit(limitResults).toArray(function(err, docs) {
+      db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).skip(getRandomInt(1, countResults - limitResults)).limit(limitResults).toArray(function (err, docs) {
         if (err) {
           handleError(res, err.message, "Failed to get quotes.");
         } else {
@@ -113,14 +113,28 @@ app.get("/api/quotes/category/:categ", function(req, res) {
   //console.log("outer count: " + countResults);
 });
 
+app.get("/api/quotes/categories", function (req, res) {
+
+  db.collection(QUOTES_COLLECTION).aggregate([{"$group": {_id:"$category", count:{$sum:1}}}], function (err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get categories.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+
+
+  //console.log("outer count: " + countResults);
+});
+
 /*  "/api/quotes/:id"
  *    GET: find quote by id
  *    PUT: update quote by id
  *    DELETE: deletes quote by id
  */
 
-app.get("/api/quotes/:id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+app.get("/api/quotes/:id", function (req, res) {
+  db.collection(QUOTES_COLLECTION).findOne({_id: new ObjectID(req.params.id)}, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get quote");
     } else {
@@ -129,8 +143,8 @@ app.get("/api/quotes/:id", function(req, res) {
   });
 });
 
-app.get("/api/quotes/quote_id/:quote_id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).findOne({ quote_id: req.params.quote_id}, function(err, doc) {
+app.get("/api/quotes/quote_id/:quote_id", function (req, res) {
+  db.collection(QUOTES_COLLECTION).findOne({quote_id: req.params.quote_id}, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get category");
     } else {
@@ -139,11 +153,11 @@ app.get("/api/quotes/quote_id/:quote_id", function(req, res) {
   });
 });
 
-app.put("/api/quotes/:id", function(req, res) {
+app.put("/api/quotes/:id", function (req, res) {
   var updateDoc = req.body;
   delete updateDoc._id;
 
-  db.collection(QUOTES_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+  db.collection(QUOTES_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to update quote");
     } else {
@@ -153,8 +167,8 @@ app.put("/api/quotes/:id", function(req, res) {
   });
 });
 
-app.delete("/api/quotes/:id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+app.delete("/api/quotes/:id", function (req, res) {
+  db.collection(QUOTES_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function (err, result) {
     if (err) {
       handleError(res, err.message, "Failed to delete quote");
     } else {
@@ -163,8 +177,8 @@ app.delete("/api/quotes/:id", function(req, res) {
   });
 });
 
-app.get("/api/quotes/:id", function(req, res) {
-  db.collection(QUOTES_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+app.get("/api/quotes/:id", function (req, res) {
+  db.collection(QUOTES_COLLECTION).findOne({_id: new ObjectID(req.params.id)}, function (err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get quote");
     } else {
