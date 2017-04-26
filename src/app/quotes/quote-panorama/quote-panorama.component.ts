@@ -88,12 +88,17 @@ export class QuotePanoramaComponent implements OnInit {
           } else{
             this.quotes = quotes;
           }
-        this.sharedService.publishQuote(this.currentQuote, this.quotes);
+        this.publishQuote();
       })
   }
 
   private changeQuote(id:number){
     this.currentQuote = this.getQuote(id.toString());
     window.scrollTo(0,0);
+    this.publishQuote();
+  }
+
+  private publishQuote(){
+    this.sharedService.publishQuote(this.currentQuote, this.quotes);
   }
 }
