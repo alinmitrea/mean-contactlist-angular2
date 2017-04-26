@@ -12,17 +12,28 @@ import { SharedService } from '../../shared.service';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'ss',  quote_id: '999',  description: 'loading', author: 'loading', category: 'age', status:'old' };
+  currentQuote: Quote = {  _id: 'ss',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'age', status:'old' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
-  fakeParse: Array<string> = ['one', 'two'];
+  fakeParse: Array<string> = ['one', 'two']; // used in quote-panorama.component.html to display the new quotes loaded with 'more'
   quotes: Quote[];
   status: string='new';
 
   constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
+    var serviceQuote : Quote;
+    serviceQuote = this.sharedService.getQuote();
+
+    if (!(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
+      this.currentQuote = this.sharedService.getQuote();
+      this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
+      this.quotes = this.sharedService.getQuotesByCategory();
+    }
   }
 
   ngOnInit() {
-    this.setNewQuote();
+    // get a new quote only first time (quote_id = -999 is the default loaded quote: see above)
+    if (this.currentQuote.quote_id == '-999') {
+      this.setNewQuote();
+    }
   }
 
   getQuotes() {
@@ -44,14 +55,10 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   setNewQuote(): void {
-    // this.currentQuote = this.getQuote(this.getRandomInt(0, this.quotes.length - 1).toString());
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    this.sharedService.publishData(this.backgroundColorClass + '-text');
+    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
 
     this.getRandomQuote(true);
-    // const contents = 'quoteSample';
-    // console.log(contents + this.currentQuote.description);
-
   }
 
   private getRandomQuote(reset: boolean) {
@@ -81,6 +88,7 @@ export class QuotePanoramaComponent implements OnInit {
           } else{
             this.quotes = quotes;
           }
+        this.sharedService.publishQuote(this.currentQuote, this.quotes);
       })
   }
 
