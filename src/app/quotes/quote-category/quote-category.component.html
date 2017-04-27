@@ -2,9 +2,14 @@
   <div class="row">
     <div class="col jumbotron">
       <h1>
-        Categories tab is active!
-        <div *ngIf="currentQuote">{{currentQuote.category}} </div>
+        Available categories
       </h1>
+        <!--<div *ngIf="currentQuote">{{currentQuote.category}} </div>-->
+
+        <div *ngFor="let category of categories">
+            <a href="#" *ngIf="category._id">{{category._id}} <div class="badge">{{category.count}}</div></a>
+        </div>
+
     </div>
   </div>
 </div>

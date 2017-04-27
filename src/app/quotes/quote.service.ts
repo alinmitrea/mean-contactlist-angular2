@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Quote } from './quote';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import {Category} from "./category";
 
 @Injectable()
 export class QuoteService {
@@ -16,6 +17,13 @@ export class QuoteService {
     return this.http.get(this.quotesUrl)
       .toPromise()
       .then(response => response.json() as Quote[])
+      .catch(this.handleError);
+  }
+  // get("/api/quotes/categories")
+  getDBCategories(): Promise<Category[]> {
+    return this.http.get(this.quotesUrl + '/categories')
+      .toPromise()
+      .then(response => response.json() as Category[])
       .catch(this.handleError);
   }
   // get("/api/quotes/category/:category")
