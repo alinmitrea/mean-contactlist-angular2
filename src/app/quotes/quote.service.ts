@@ -26,9 +26,9 @@ export class QuoteService {
       .then(response => response.json() as Category[])
       .catch(this.handleError);
   }
-  // get("/api/quotes/category/:category")
-  getDBQuoteByCategory(category: String): Promise<Quote[]> {
-    return this.http.get(this.categoryQuoteUrl + category)
+  // get("/api/quotes/category/:category/:limit")
+  getDBQuoteByCategory(category: String, limit: String): Promise<Quote[]> {
+    return this.http.get(this.categoryQuoteUrl + category + '/' + limit)
       .toPromise()
       .then(response => response.json() as Quote[])
       .catch(this.handleError);

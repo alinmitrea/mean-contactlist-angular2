@@ -12,7 +12,9 @@ import {Category} from "../category";
 })
 export class QuoteCategoryComponent implements OnInit {
   currentQuote: Quote;
+  currentQuotesByCategory : Quote[];
   categories: Category[];
+  private QUOTES_BY_CATEGORY_LIMIT: String ='11';
   constructor(private sharedService: SharedService, private quoteService: QuoteService) {
     this.sharedService.currentQuote$.subscribe(
       data => {
@@ -32,6 +34,18 @@ export class QuoteCategoryComponent implements OnInit {
         this.categories = categories;
       })
     ;
+  }
+
+  private getQuotesByCategory(category: string) {
+    console.log('quote-category: getQuotesByCategory>>' + category);
+    this.quoteService
+      .getDBQuoteByCategory(category.toString(), this.QUOTES_BY_CATEGORY_LIMIT)
+      .then((quotes: Quote[]) => {
+          this.currentQuotesByCategory = quotes;
+          this.currentQuote = this.currentQuotesByCategory.pop();
+          console.log('quote-category: getQuotesByCategory>>' + this.currentQuote.description);
+          this.sharedService.publishQuote(this.currentQuote, this.currentQuotesByCategory);
+      })
   }
 
 

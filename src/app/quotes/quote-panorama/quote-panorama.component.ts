@@ -17,8 +17,18 @@ export class QuotePanoramaComponent implements OnInit {
   fakeParse: Array<string> = ['one', 'two']; // used in quote-panorama.component.html to display the new quotes loaded with 'more'
   quotes: Quote[];
   status: string='new';
+  private QUOTES_BY_CATEGORY_LIMIT: String ='10';
 
   constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
+    this.sharedService.currentQuote$.subscribe(
+      data => {
+        this.currentQuote = data;
+     });
+    this.sharedService.currentQuotesByCategory$.subscribe(
+      data => {
+        this.quotes = data;
+      });
+
     var serviceQuote : Quote;
     serviceQuote = this.sharedService.getQuote();
 
@@ -73,7 +83,7 @@ export class QuotePanoramaComponent implements OnInit {
 
   private getQuotesByCategory(category: string, reset: boolean) {
     this.quoteService
-      .getDBQuoteByCategory(category.toString())
+      .getDBQuoteByCategory(category.toString(), this.QUOTES_BY_CATEGORY_LIMIT)
       .then((quotes: Quote[]) => {
         if (reset){
           this.quotes = quotes;

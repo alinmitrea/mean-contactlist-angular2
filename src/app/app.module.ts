@@ -27,6 +27,7 @@ import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.c
     RadioButtonModule,
     RouterModule.forRoot([
       { path: '', component: QuotePanoramaComponent },
+      { path: 'home', redirectTo: ''},
       { path: 'categories', component: QuoteCategoryComponent },
       { path: '**', redirectTo: '', pathMatch: 'full'}
     ])

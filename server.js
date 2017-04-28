@@ -98,9 +98,9 @@ app.get("/api/quotes/goto/:position/limit/:id", function (req, res) {
 });
 
 
-app.get("/api/quotes/category/:categ", function (req, res) {
+app.get("/api/quotes/category/:categ/:limit", function (req, res) {
   var countResults = 10;
-  var limitResults = 10;
+  var limitResults = parseInt(req.params.limit);
   db.collection(QUOTES_COLLECTION).find({category: new RegExp(req.params.categ, 'i')}).count(function (err, count) {
     if (err) {
       handleError(res, err.message, "Failed to count quotes.");

@@ -6,8 +6,8 @@
       </h1>
         <!--<div *ngIf="currentQuote">{{currentQuote.category}} </div>-->
 
-        <div *ngFor="let category of categories" class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-            <a href="#" *ngIf="category._id">{{category._id}} <div class="badge">{{category.count}}</div></a>
+        <div *ngFor="let category of categories" class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <a [routerLink]="['/home']" (click)='getQuotesByCategory(category._id)' *ngIf="category._id">{{category._id}} <div class="badge">{{category.count}}</div></a>
         </div>
 
     </div>
