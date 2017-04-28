@@ -18,7 +18,7 @@ export class QuoteCategoryComponent implements OnInit {
   constructor(private sharedService: SharedService, private quoteService: QuoteService) {
     this.sharedService.currentQuote$.subscribe(
       data => {
-        console.log('quote-category received data from quote: ' + data +  data.quote_id);
+        //console.log('quote-category received data from quote: ' + data +  data.quote_id);
         this.currentQuote = data;
       });
   }
@@ -37,13 +37,13 @@ export class QuoteCategoryComponent implements OnInit {
   }
 
   private getQuotesByCategory(category: string) {
-    console.log('quote-category: getQuotesByCategory>>' + category);
+    //console.log('quote-category: getQuotesByCategory>>' + category);
     this.quoteService
       .getDBQuoteByCategory(category.toString(), this.QUOTES_BY_CATEGORY_LIMIT)
       .then((quotes: Quote[]) => {
           this.currentQuotesByCategory = quotes;
           this.currentQuote = this.currentQuotesByCategory.pop();
-          console.log('quote-category: getQuotesByCategory>>' + this.currentQuote.description);
+          //console.log('quote-category: getQuotesByCategory>>' + this.currentQuote.description);
           this.sharedService.publishQuote(this.currentQuote, this.currentQuotesByCategory);
       })
   }

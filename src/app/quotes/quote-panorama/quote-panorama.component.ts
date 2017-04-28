@@ -61,7 +61,7 @@ export class QuotePanoramaComponent implements OnInit {
   selectColor(color: string): void {
     this.textClass = color;
     const contents = 'selectedColor' + color;
-    console.log(contents);
+    //console.log(contents);
   }
 
   setNewQuote(): void {
