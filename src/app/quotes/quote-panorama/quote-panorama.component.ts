@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Quote} from '../quote';
 import { QuoteService } from '../quote.service';
 import { SharedService } from '../../shared.service';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quote-panorama',
@@ -19,7 +20,8 @@ export class QuotePanoramaComponent implements OnInit {
   status: string='new';
   private QUOTES_BY_CATEGORY_LIMIT: String ='10';
 
-  constructor(private quoteService: QuoteService,  private sharedService: SharedService) {
+  constructor(private quoteService: QuoteService,  private sharedService: SharedService, private route: ActivatedRoute, private router: Router)
+   {
     this.sharedService.currentQuote$.subscribe(
       data => {
         this.currentQuote = data;
@@ -32,7 +34,15 @@ export class QuotePanoramaComponent implements OnInit {
     var serviceQuote : Quote;
     serviceQuote = this.sharedService.getQuote();
 
-    if (!(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
+    var loadedFromDirectLink = false;
+     this.route.params.subscribe(params => {
+       var quote_id = params['id'];
+       if (!(typeof quote_id === 'undefined' || quote_id === null)) {
+         this.getDBQuote(quote_id);
+         loadedFromDirectLink = true;
+       }
+     });
+    if (!loadedFromDirectLink  && !(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
       this.currentQuote = this.sharedService.getQuote();
       this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
       this.quotes = this.sharedService.getQuotesByCategory();
@@ -52,6 +62,15 @@ export class QuotePanoramaComponent implements OnInit {
 
   getQuote(i: string) {
     return this.getQuotes().find(quote => quote.quote_id === i);
+  }
+
+  getDBQuote(i: string) {
+    this.quoteService
+      .getDBQuote(i)
+      .then((quotes: Quote) => {
+        this.currentQuote = quotes;
+        this.getQuotesByCategory(this.currentQuote.category, true);
+      });
   }
 
   getRandomInt(min, max) {
@@ -106,6 +125,7 @@ export class QuotePanoramaComponent implements OnInit {
     this.currentQuote = this.getQuote(id.toString());
     window.scrollTo(0,0);
     this.publishQuote();
+    this.router.navigate(['quote', this.currentQuote.quote_id]);
   }
 
   private publishQuote(){

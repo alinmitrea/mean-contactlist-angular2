@@ -46,6 +46,10 @@ app.get('/categories', function (req, res) {
   res.sendFile(distDir + '/index.html')
 });
 
+app.get('/quote/:id', function (req, res) {
+  res.sendFile(distDir + '/index.html')
+});
+
 // CONTACTS API ROUTES BELOW
 
 // Generic error handler used by all endpoints.
