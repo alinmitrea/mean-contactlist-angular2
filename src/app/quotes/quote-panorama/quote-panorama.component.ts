@@ -13,7 +13,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'ss',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'age', status:'old' };
+  currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'loading', status:'old' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   fakeParse: Array<string> = ['one', 'two']; // used in quote-panorama.component.html to display the new quotes loaded with 'more'
   quotes: Quote[];

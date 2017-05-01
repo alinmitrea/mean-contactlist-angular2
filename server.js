@@ -125,7 +125,7 @@ app.get("/api/quotes/category/:categ/:limit", function (req, res) {
 
 app.get("/api/quotes/categories", function (req, res) {
 
-  db.collection(QUOTES_COLLECTION).aggregate([{"$group": {_id:"$category", count:{$sum:1}}}], function (err, docs) {
+  db.collection(QUOTES_COLLECTION).aggregate([{"$group": {_id:"$category", count:{$sum:1}}}, {"$sort":{"_id":1}}], function (err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get categories.");
     } else {
