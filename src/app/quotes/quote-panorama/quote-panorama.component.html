@@ -1,14 +1,14 @@
 <div class="container-fluid parent-box">
     <div class="row quote-box {{backgroundColorClass}}" *ngIf="currentQuote.description != 'loading'">
-    <div class="col jumbotron">
-      <h1 class="{{textClass}}">
-        {{currentQuote.description}}
-      </h1>
-      <h2 class="featurette-heading" (click)="setNewQuote()">
-        <span class="text-muted">{{currentQuote.author}}</span>
-        <span class="text-muted quote-category"> #{{currentQuote.category}}</span>
-      </h2>
-    </div>
+      <div class="col quote-box-inner">
+        <h1 class="{{textClass}}">
+          {{currentQuote.description}}
+        </h1>
+        <h2 class="featurette-heading" (click)="setNewQuote()">
+          <span class="text-muted">{{currentQuote.author}}</span>
+          <span class="text-muted quote-category"> #{{currentQuote.category}}</span>
+        </h2>
+      </div>
   </div>
 </div>
 

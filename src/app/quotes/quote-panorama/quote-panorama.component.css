@@ -10,6 +10,13 @@
     padding-top: 20%;
     padding-bottom: 4%;
   }
+  .quote-box-inner{
+    padding: 15px;
+  }
+  .quote-box {
+    width: 95%;
+    padding-bottom: 20px;
+  }
 }
 
 /*Small devices (landscape phones, 450px and up)*/
@@ -23,6 +30,13 @@
   .parent-box {
     padding-top: 8%;
     padding-bottom: 5%;
+  }
+  .quote-box-inner{
+    padding: 15px;
+  }
+  .quote-box {
+    width: 95%;
+    padding-bottom: 20px;
   }
 }
 
@@ -38,6 +52,13 @@
     padding-top: 6%;
     padding-bottom: 6%;
   }
+  .quote-box-inner{
+    padding: 20px;
+  }
+  .quote-box {
+    width: 85%;
+    padding-bottom: 20px;
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
@@ -51,6 +72,13 @@
   .parent-box {
     padding-top: 4%;
     padding-bottom: 6%;
+  }
+  .quote-box-inner{
+    padding: 30px;
+  }
+  .quote-box {
+    width: 85%;
+    padding-bottom: 25px;
   }
 }
 
@@ -66,6 +94,13 @@
   .parent-box {
     padding-top: 4%;
     padding-bottom: 6%;
+  }
+  .quote-box-inner{
+    padding: 35px;
+  }
+  .quote-box {
+    width: 80%;
+    padding-bottom: 30px;
   }
 }
 
@@ -92,11 +127,15 @@
 }
 
 .quote-box {
-  width: 80%;
   height: 50%;
   margin: 0 auto;
   border-radius: 15px;
   background-color: #FFA500;
+}
+
+.quote-box-inner {
+  border-radius: 15px;
+  background-color: #eee;
 }
 
 .quote-category{
