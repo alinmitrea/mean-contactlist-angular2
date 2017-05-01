@@ -13,7 +13,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'loading', status:'old' };
+  currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'loading', status:'load_random' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   fakeParse: Array<string> = ['one', 'two']; // used in quote-panorama.component.html to display the new quotes loaded with 'more'
   quotes: Quote[];
@@ -38,8 +38,9 @@ export class QuotePanoramaComponent implements OnInit {
      this.route.params.subscribe(params => {
        var quote_id = params['id'];
        if (!(typeof quote_id === 'undefined' || quote_id === null)) {
-         this.getDBQuote(quote_id);
          loadedFromDirectLink = true;
+         this.currentQuote.status = 'load_from_direct_link';
+         this.getDBQuote(quote_id);
        }
      });
     if (!loadedFromDirectLink  && !(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
@@ -51,7 +52,7 @@ export class QuotePanoramaComponent implements OnInit {
 
   ngOnInit() {
     // get a new quote only first time (quote_id = -999 is the default loaded quote: see above)
-    if (this.currentQuote.quote_id == '-999') {
+    if (this.currentQuote.status == 'load_random') {
       this.setNewQuote();
     }
   }
