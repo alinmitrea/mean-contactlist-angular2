@@ -3,12 +3,18 @@
   .category-text {
     font-size: 25px;
   }
+  h3 {
+    font-size: 20px;
+  }
 }
 
 /*Small devices (landscape phones, 450px and up)*/
 @media (min-width: 450px) {
   .category-text {
     font-size: 30px;
+  }
+  h3 {
+    font-size: 20px;
   }
 }
 
@@ -17,12 +23,18 @@
   .category-text {
     font-size: 30px;
   }
+  h3 {
+    font-size: 25px;
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   .category-text {
     font-size: 30px;
+  }
+  h3 {
+    font-size: 25px;
   }
 }
 
@@ -31,6 +43,13 @@
   .category-text {
     font-size: 35px;
   }
+  h3 {
+    font-size: 25px;
+  }
+}
+
+h3 {
+  color:gray;
 }
 
 .category-container-img {

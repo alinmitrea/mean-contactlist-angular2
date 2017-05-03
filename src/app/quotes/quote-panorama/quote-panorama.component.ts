@@ -51,7 +51,7 @@ export class QuotePanoramaComponent implements OnInit {
   }
 
   ngOnInit() {
-    // get a new quote only first time (quote_id = -999 is the default loaded quote: see above)
+    // get a new quote only first time
     if (this.currentQuote.status == 'load_random') {
       this.setNewQuote();
     }
