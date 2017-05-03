@@ -1,0 +1,38 @@
+.category-container-img {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.category-image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.category-middle-div {
+  transition: .5s ease;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.category-container-img:hover .category-image {
+  opacity: 0.6;
+}
+
+.category-container-img:hover .category-middle-div {
+  opacity: 1;
+}
+
+.category-text {
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+}
+
