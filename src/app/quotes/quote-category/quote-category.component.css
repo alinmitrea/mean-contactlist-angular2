@@ -55,6 +55,7 @@ h3 {
 .category-container-img {
   position: relative;
   padding-bottom: 10px;
+  max-width: 350px;
 }
 
 .category-image {
