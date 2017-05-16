@@ -11,15 +11,13 @@ import { HeaderComponent } from './header/header.component';
 import { SharedService } from './shared.service';
 import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
 import { NavbarModule } from './navbar';
-import {NavbarComponent} from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     QuotePanoramaComponent,
     HeaderComponent,
-    QuoteCategoryComponent,
-    NavbarComponent
+    QuoteCategoryComponent
   ],
   imports: [
     BrowserModule,

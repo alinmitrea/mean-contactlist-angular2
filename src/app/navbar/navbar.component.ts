@@ -5,7 +5,6 @@ import {SharedService} from "../shared.service";
 import {Quote} from "../quotes/quote";
 
 @Component({
-  moduleId: module.id,
   selector: 'navbar',
   templateUrl: 'navbar.component.html',
   styleUrls: [ 'navbar.component.css' ]
