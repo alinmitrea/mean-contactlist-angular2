@@ -10,7 +10,7 @@ import {Quote} from "../quotes/quote";
 export class HeaderComponent implements OnInit {
   colorClass: string = "nice-red";
   currentQuote: Quote;
-
+  isCollapsed = true;
   constructor(private sharedService: SharedService) {
     this.sharedService.colorClass$.subscribe(
       data => {

@@ -1,0 +1,101 @@
+.active {
+  color: #fff;
+}
+.navbar-toggler {
+  border: solid 1px silver;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.91);
+  font-size: 25px;
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 300px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .logo-size {
+    font-size: 20px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .logo-size {
+    font-size: 25px;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .logo-size {
+    font-size: 30px;
+  }
+}
+
+.logo{
+  color: #3c763d;
+  padding-right: 10px;
+}
+
+a.logo:link {
+  text-decoration: none;
+}
+
+a.logo:visited {
+  text-decoration: none;
+}
+
+a.logo:hover {
+  text-decoration: underline;
+}
+
+a.logo:active {
+  text-decoration: underline;
+}
+
+.logo-font {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.nice-grapefruit-text{
+  color: #DC381F;
+}
+
+.nice-deep-sky-blue-text{
+  color: #3BB9FF;
+}
+
+.nice-yellow-text{
+  color: #FFCC33;
+}
+
+.nice-turquoise-text{
+  color: #40e0d0;
+}
+
+.nice-lime-green-text{
+  color: forestgreen;
+}
+
+.nice-red-text{
+  color: orangered;
+}
+
+.header{
+  padding-bottom: 7%;
+}
+
+.navbar-brand {
+  padding: 5px 5px;
+}

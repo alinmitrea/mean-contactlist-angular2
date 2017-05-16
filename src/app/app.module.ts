@@ -10,6 +10,7 @@ import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.c
 import { HeaderComponent } from './header/header.component';
 import { SharedService } from './shared.service';
 import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
+import { NavbarModule } from './navbar';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.c
     EditorModule,
     SharedModule,
     RadioButtonModule,
+    NavbarModule,
     RouterModule.forRoot([
       { path: '', component: QuotePanoramaComponent },
       { path: 'home', redirectTo: ''},

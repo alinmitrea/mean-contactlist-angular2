@@ -38,6 +38,22 @@
   padding-right: 10px;
 }
 
+a.logo:link {
+  text-decoration: none;
+}
+
+a.logo:visited {
+  text-decoration: none;
+}
+
+a.logo:hover {
+  text-decoration: underline;
+}
+
+a.logo:active {
+  text-decoration: underline;
+}
+
 .logo-font {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
@@ -68,4 +84,8 @@
 
 .header{
   padding-bottom: 7%;
+}
+
+.navbar-brand {
+  padding: 5px 5px;
 }
