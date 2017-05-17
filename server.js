@@ -20,7 +20,7 @@ var db;
 var os = require('os');
 var hostname = os.hostname();
 
-if(hostname.indexOf("X-Lenovo-PC") > -1) {
+if(hostname.indexOf("X-Lenovo-PC") > -1 || hostname.indexOf("DI1203208") > -1) {
   process.env.MONGODB_URI = "mongodb://127.0.0.1:27017/admin";
 }
 
