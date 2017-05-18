@@ -13,15 +13,16 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
   backgroundColorClass = 'nice-red';
-  currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading', author: 'loading', category: 'loading', status:'load_random' };
+  public currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading',
+                                author: 'loading', category: 'loading', status: 'load_random' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
   fakeParse: Array<string> = ['one', 'two']; // used in quote-panorama.component.html to display the new quotes loaded with 'more'
   quotes: Quote[];
-  status: string='new';
-  private QUOTES_BY_CATEGORY_LIMIT: String ='10';
+  status= 'new';
+  private QUOTES_BY_CATEGORY_LIMIT: String = '10';
 
-  constructor(private quoteService: QuoteService,  private sharedService: SharedService, private route: ActivatedRoute, private router: Router)
-   {
+  constructor(private quoteService: QuoteService,  private sharedService: SharedService,
+              private route: ActivatedRoute, private router: Router) {
     this.sharedService.currentQuote$.subscribe(
       data => {
         this.currentQuote = data;
@@ -31,10 +32,10 @@ export class QuotePanoramaComponent implements OnInit {
         this.quotes = data;
       });
 
-    var serviceQuote : Quote;
+    let serviceQuote: Quote;
     serviceQuote = this.sharedService.getQuote();
-
-    var loadedFromDirectLink = false;
+    this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
+    let loadedFromDirectLink = false;
      this.route.params.subscribe(params => {
        var quote_id = params['id'];
        if (!(typeof quote_id === 'undefined' || quote_id === null)) {
@@ -45,14 +46,15 @@ export class QuotePanoramaComponent implements OnInit {
      });
     if (!loadedFromDirectLink  && !(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
       this.currentQuote = this.sharedService.getQuote();
-      this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
       this.quotes = this.sharedService.getQuotesByCategory();
+      this.publishColors();
+      window.scrollTo(0, 0);
     }
   }
 
   ngOnInit() {
     // get a new quote only first time
-    if (this.currentQuote.status == 'load_random') {
+    if (this.currentQuote.status === 'load_random') {
       this.setNewQuote();
     }
   }
@@ -78,17 +80,14 @@ export class QuotePanoramaComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  selectColor(color: string): void {
-    this.textClass = color;
-    const contents = 'selectedColor' + color;
-    //console.log(contents);
-  }
-
   setNewQuote(): void {
     this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
-
+    this.publishColors();
     this.getRandomQuote(true);
+  }
+
+  private publishColors() {
+    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
   }
 
   private getRandomQuote(reset: boolean) {
@@ -105,31 +104,31 @@ export class QuotePanoramaComponent implements OnInit {
     this.quoteService
       .getDBQuoteByCategory(category.toString(), this.QUOTES_BY_CATEGORY_LIMIT)
       .then((quotes: Quote[]) => {
-        if (reset){
+        if (reset) {
           this.quotes = quotes;
-        }
-        else
-          if (typeof this.quotes !== 'undefined'){
+        } else
+          if (typeof this.quotes !== 'undefined') {
             this.status = this.status + '+';
             quotes.forEach((item, index) => {
               item.status = this.status;
-              this.quotes.push(item)
-            })
-          } else{
+              this.quotes.push(item);
+            });
+          } else {
             this.quotes = quotes;
           }
         this.publishQuote();
-      })
+      });
   }
 
-  private changeQuote(id:number){
+  private changeQuote(id: number) {
     this.currentQuote = this.getQuote(id.toString());
-    window.scrollTo(0,0);
+    this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
+    window.scrollTo(0, 0);
     this.publishQuote();
     this.router.navigate(['quote', this.currentQuote.quote_id]);
   }
 
-  private publishQuote(){
+  private publishQuote() {
     this.sharedService.publishQuote(this.currentQuote, this.quotes);
   }
 }
