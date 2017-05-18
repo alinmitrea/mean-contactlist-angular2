@@ -21,29 +21,28 @@ export class QuotePanoramaComponent implements OnInit {
   status= 'new';
   private QUOTES_BY_CATEGORY_LIMIT: String = '10';
 
+  /*
+   constructor and init
+  */
   constructor(private quoteService: QuoteService,  private sharedService: SharedService,
               private route: ActivatedRoute, private router: Router) {
-    this.sharedService.currentQuote$.subscribe(
-      data => {
-        this.currentQuote = data;
-     });
-    this.sharedService.currentQuotesByCategory$.subscribe(
-      data => {
-        this.quotes = data;
-      });
+    this.sharedService.currentQuote$.subscribe(data => {this.currentQuote = data; });
+    this.sharedService.currentQuotesByCategory$.subscribe(data => {this.quotes = data; });
 
     let serviceQuote: Quote;
     serviceQuote = this.sharedService.getQuote();
     this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
+
     let loadedFromDirectLink = false;
-     this.route.params.subscribe(params => {
-       var quote_id = params['id'];
+    this.route.params.subscribe(params => {
+       const quote_id = params['id'];
        if (!(typeof quote_id === 'undefined' || quote_id === null)) {
          loadedFromDirectLink = true;
          this.currentQuote.status = 'load_from_direct_link';
          this.getDBQuote(quote_id);
        }
-     });
+    });
+
     if (!loadedFromDirectLink  && !(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
       this.currentQuote = this.sharedService.getQuote();
       this.quotes = this.sharedService.getQuotesByCategory();
@@ -58,15 +57,34 @@ export class QuotePanoramaComponent implements OnInit {
       this.setNewQuote();
     }
   }
+  /*
+   business methods
+  */
+  setNewQuote(): void {
+    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
+    this.publishColors();
+    this.getRandomQuote(true);
+  }
 
-  getQuotes() {
-    return this.quotes;
+  public changeQuote(id: number) {
+    this.currentQuote = this.getQuote(id.toString());
+    this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
+    window.scrollTo(0, 0);
+    this.publishQuote();
+    this.router.navigate(['quote', this.currentQuote.quote_id]);
   }
 
   getQuote(i: string) {
     return this.getQuotes().find(quote => quote.quote_id === i);
   }
 
+  getQuotes() {
+    return this.quotes;
+  }
+
+  /*
+    DB - data access methods
+  */
   getDBQuote(i: string) {
     this.quoteService
       .getDBQuote(i)
@@ -76,31 +94,7 @@ export class QuotePanoramaComponent implements OnInit {
       });
   }
 
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  setNewQuote(): void {
-    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    this.publishColors();
-    this.getRandomQuote(true);
-  }
-
-  private publishColors() {
-    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
-  }
-
-  private getRandomQuote(reset: boolean) {
-    this.quoteService
-      .getDBQuote(this.getRandomInt(1, 70000).toString())
-      .then((quotes: Quote) => {
-        this.currentQuote = quotes;
-        this.getQuotesByCategory(this.currentQuote.category, reset);
-      })
-    ;
-  }
-
-  private getQuotesByCategory(category: string, reset: boolean) {
+  public getQuotesByCategory(category: string, reset: boolean) {
     this.quoteService
       .getDBQuoteByCategory(category.toString(), this.QUOTES_BY_CATEGORY_LIMIT)
       .then((quotes: Quote[]) => {
@@ -120,15 +114,31 @@ export class QuotePanoramaComponent implements OnInit {
       });
   }
 
-  private changeQuote(id: number) {
-    this.currentQuote = this.getQuote(id.toString());
-    this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
-    window.scrollTo(0, 0);
-    this.publishQuote();
-    this.router.navigate(['quote', this.currentQuote.quote_id]);
+  private getRandomQuote(reset: boolean) {
+    this.quoteService
+      .getDBQuote(this.getRandomInt(1, 70000).toString())
+      .then((quotes: Quote) => {
+        this.currentQuote = quotes;
+        this.getQuotesByCategory(this.currentQuote.category, reset);
+      })
+    ;
   }
 
+  /*
+    Publish methods
+   */
   private publishQuote() {
     this.sharedService.publishQuote(this.currentQuote, this.quotes);
+  }
+
+  private publishColors() {
+    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
+  }
+
+  /*
+    Helper methods
+   */
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
