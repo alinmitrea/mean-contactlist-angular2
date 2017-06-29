@@ -10,7 +10,7 @@ import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.c
 import { HeaderComponent } from './header/header.component';
 import { SharedService } from './shared.service';
 import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
-import { NavbarModule } from './navbar'; //tst
+import { NavbarModule } from './navbar';
 
 @NgModule({
   declarations: [
