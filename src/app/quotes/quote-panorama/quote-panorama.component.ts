@@ -12,7 +12,9 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 })
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
-  backgroundColorClass = 'nice-lime-green';
+  backgroundColorClass = 'nice-deep-sky-blue';
+  colorClass = this.backgroundColorClass + '-text';
+
   public currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading',
                                 author: 'loading', category: 'loading', status: 'load_random' };
   colors: Array<string> = ['nice-grapefruit', 'nice-deep-sky-blue', 'nice-yellow', 'nice-turquoise', 'nice-lime-green'];
@@ -31,10 +33,6 @@ export class QuotePanoramaComponent implements OnInit {
 
     let serviceQuote: Quote;
     serviceQuote = this.sharedService.getQuote();
-    let getBackgroundColorClass = this.sharedService.getBackgroundColorClass();
-    if (getBackgroundColorClass != null) {
-      this.backgroundColorClass = getBackgroundColorClass;
-    }
     let loadedFromDirectLink = false;
     this.route.params.subscribe(params => {
        const quote_id = params['id'];
@@ -42,7 +40,6 @@ export class QuotePanoramaComponent implements OnInit {
          loadedFromDirectLink = true;
          this.currentQuote.status = 'load_from_direct_link';
          this.getDBQuote(quote_id);
-         console.log(this.backgroundColorClass);
        }
     });
 
@@ -50,7 +47,6 @@ export class QuotePanoramaComponent implements OnInit {
     if (!loadedFromDirectLink  && !(typeof serviceQuote === 'undefined' || serviceQuote === null)) {
       this.currentQuote = this.sharedService.getQuote();
       this.quotes = this.sharedService.getQuotesByCategory();
-      this.publishColors();
       window.scrollTo(0, 0);
     }
   }
@@ -65,14 +61,11 @@ export class QuotePanoramaComponent implements OnInit {
    business methods
   */
   setNewQuote(): void {
-    this.backgroundColorClass = this.colors[this.getRandomInt(0, this.colors.length - 1)];
-    this.publishColors();
     this.getRandomQuote(true);
   }
 
   public changeQuote(id: number) {
     this.currentQuote = this.getQuote(id.toString());
-    this.backgroundColorClass = this.sharedService.getBackgroundColorClass();
     window.scrollTo(0, 0);
     this.publishQuote();
     this.router.navigate(['quote', this.currentQuote.quote_id]);
@@ -133,10 +126,6 @@ export class QuotePanoramaComponent implements OnInit {
    */
   private publishQuote() {
     this.sharedService.publishQuote(this.currentQuote, this.quotes);
-  }
-
-  private publishColors() {
-    this.sharedService.publishColors(this.backgroundColorClass + '-text', this.backgroundColorClass);
   }
 
   /*

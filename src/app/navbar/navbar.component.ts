@@ -10,18 +10,13 @@ import {Quote} from "../quotes/quote";
   styleUrls: [ 'navbar.component.css' ]
 })
 export class NavbarComponent implements OnInit {
-  colorClass: string = "nice-red";
+  colorClass = 'nice-deep-sky-blue-text';
   currentQuote: Quote;
   public menuItems: any[];
   public brandMenu: any;
   isCollapsed = true;
 
   constructor(private sharedService: SharedService) {
-    this.sharedService.colorClass$.subscribe(
-      data => {
-        //console.log('header received data from quote: ' + data);
-        this.colorClass = data;
-      });
     this.sharedService.currentQuote$.subscribe(
       data => {
         //console.log('header received data from quote: ' + data +  data.quote_id);
