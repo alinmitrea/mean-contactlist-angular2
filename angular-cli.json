@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.28.3",
-    "name": "mean-contactlist-angular2"
+    "name": "quotes"
   },
   "apps": [
     {
@@ -25,8 +25,8 @@
         "../node_modules/quill/dist/quill.snow.css"
       ],
       "scripts": ["../node_modules/quill/dist/quill.js"],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
