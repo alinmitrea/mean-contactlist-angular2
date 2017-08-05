@@ -46,11 +46,11 @@
     "types": "^0.1.1",
     "typescript": "^2.4.2",
     "webpack": "^3.4.1",
-    "zone.js": "^0.8.16"
+    "zone.js": "^0.8.16",
+    "@types/node": "^6.0.85"
   },
   "devDependencies": {
     "@types/jasmine": "2.5.38",
-    "@types/node": "^6.0.85",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
