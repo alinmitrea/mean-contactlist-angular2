@@ -16,28 +16,28 @@ export class QuoteService {
   getDBQuotes(): Promise<Quote[]> {
     return this.http.get(this.quotesUrl)
       .toPromise()
-      .then(response => response.json() as Quote[])
+      .then(response => response.json() )
       .catch(this.handleError);
   }
   // get("/api/quotes/categories")
   getDBCategories(): Promise<Category[]> {
     return this.http.get(this.quotesUrl + '/categories')
       .toPromise()
-      .then(response => response.json() as Category[])
+      .then(response => response.json())
       .catch(this.handleError);
   }
   // get("/api/quotes/category/:category/:limit")
   getDBQuoteByCategory(category: String, limit: String): Promise<Quote[]> {
     return this.http.get(this.categoryQuoteUrl + category + '/' + limit)
       .toPromise()
-      .then(response => response.json() as Quote[])
+      .then(response => response.json())
       .catch(this.handleError);
   }
   // get("/api/quotes/quote_id/:id")
   getDBQuote(i: String): Promise<Quote> {
     return this.http.get(this.oneQuoteUrl + i)
       .toPromise()
-      .then(response => response.json() as Quote)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
@@ -45,7 +45,7 @@ export class QuoteService {
   createQuote(newQuote: Quote): Promise<Quote> {
     return this.http.post(this.quotesUrl, newQuote)
       .toPromise()
-      .then(response => response.json() as Quote)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
@@ -53,7 +53,7 @@ export class QuoteService {
   deleteQuote(delQuoteId: String): Promise<String> {
     return this.http.delete(this.quotesUrl + '/' + delQuoteId)
       .toPromise()
-      .then(response => response.json() as String)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
@@ -62,7 +62,7 @@ export class QuoteService {
     const putUrl = this.quotesUrl + '/' + putQuote._id;
     return this.http.put(putUrl, putQuote)
       .toPromise()
-      .then(response => response.json() as Quote)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
