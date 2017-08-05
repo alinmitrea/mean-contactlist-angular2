@@ -47,7 +47,7 @@
     "typescript": "^2.4.2",
     "webpack": "^3.4.1",
     "zone.js": "^0.8.16",
-    "@types/node": "^6.0.85", // devDependencies start here
+    "@types/node": "^6.0.85",
     "@types/jasmine": "2.5.38",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",
