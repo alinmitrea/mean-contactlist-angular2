@@ -1,10 +1,10 @@
-import { MeanContactlistAngular2Page } from './app.po';
+import { LazyQuote } from './app.po';
 
-describe('mean-contactlist-angular2 App', function() {
-  let page: MeanContactlistAngular2Page;
+describe('lazyquote App', function() {
+  let page: LazyQuote;
 
   beforeEach(() => {
-    page = new MeanContactlistAngular2Page();
+    page = new LazyQuote();
   });
 
   it('should display message saying app works', () => {

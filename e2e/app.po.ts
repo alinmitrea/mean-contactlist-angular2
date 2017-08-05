@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class MeanContactlistAngular2Page {
+export class LazyQuote {
   navigateTo() {
     return browser.get('/');
   }
