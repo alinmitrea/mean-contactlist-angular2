@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
+  "engines": {
+    "node": "6.11.2"
+  },
   "scripts": {
     "ng": "ng",
     "prestart": "ng build",
