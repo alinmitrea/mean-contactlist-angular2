@@ -10,12 +10,14 @@ import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.c
 import { SharedService } from './shared.service';
 import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
 import { NavbarModule } from './navbar';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuotePanoramaComponent,
-    QuoteCategoryComponent
+    QuoteCategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
