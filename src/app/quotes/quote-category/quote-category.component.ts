@@ -7,7 +7,7 @@ import {Category} from "../category";
 @Component({
   selector: 'app-quote-category',
   templateUrl: './quote-category.component.html',
-  styleUrls: ['./quote-category.component.css'],
+  styleUrls: ['./quote-category.component.css', './../../app.component.css'],
   providers: [QuoteService]
 })
 export class QuoteCategoryComponent implements OnInit {

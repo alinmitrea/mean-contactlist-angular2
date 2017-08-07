@@ -1,2 +1,48 @@
 
 
+.nice-grapefruit{
+  background-color: #DC381F
+}
+.nice-deep-sky-blue{
+  background-color: #3BB9FF;
+}
+
+.nice-yellow{
+  background-color: #FFCC33;
+}
+
+.nice-turquoise{
+  background-color: #40e0d0;
+}
+
+.nice-lime-green{
+  background-color: forestgreen;
+}
+
+.nice-red{
+  background-color: orangered;
+}
+
+.nice-grapefruit-text{
+  color: #DC381F;
+}
+
+.nice-deep-sky-blue-text{
+  color: #3BB9FF;
+}
+
+.nice-yellow-text{
+  color: #FFCC33;
+}
+
+.nice-turquoise-text{
+  color: #40e0d0;
+}
+
+.nice-lime-green-text{
+  color: forestgreen;
+}
+
+.nice-red-text{
+  color: orangered;
+}

@@ -68,30 +68,6 @@ a.logo:active {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
-.nice-grapefruit-text{
-  color: #DC381F;
-}
-
-.nice-deep-sky-blue-text{
-  color: #3BB9FF;
-}
-
-.nice-yellow-text{
-  color: #FFCC33;
-}
-
-.nice-turquoise-text{
-  color: #40e0d0;
-}
-
-.nice-lime-green-text{
-  color: forestgreen;
-}
-
-.nice-red-text{
-  color: orangered;
-}
-
 .header{
   padding-bottom: 7%;
 }

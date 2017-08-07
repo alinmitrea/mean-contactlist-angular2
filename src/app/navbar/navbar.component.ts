@@ -7,7 +7,7 @@ import {Quote} from "../quotes/quote";
 @Component({
   selector: 'navbar',
   templateUrl: 'navbar.component.html',
-  styleUrls: [ 'navbar.component.css' ]
+  styleUrls: [ 'navbar.component.css', './../app.component.css']
 })
 export class NavbarComponent implements OnInit {
   colorClass = 'nice-deep-sky-blue-text';

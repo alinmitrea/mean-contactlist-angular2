@@ -7,13 +7,13 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-quote-panorama',
   templateUrl: './quote-panorama.component.html',
-  styleUrls: ['./quote-panorama.component.css', './quote-panorama.card-style.css'],
+  styleUrls: ['./quote-panorama.component.css', './quote-panorama.card-style.css', './../../app.component.css'],
   providers: [QuoteService]
 })
 export class QuotePanoramaComponent implements OnInit {
   textClass = 'black_text';
-  backgroundColorClass = 'nice-deep-sky-blue';
-  colorClass = this.backgroundColorClass + '-text';
+  backgroundColorClass : string;
+  colorClass : string;
 
   public currentQuote: Quote = {  _id: 'loading',  quote_id: '-999',  description: 'loading',
                                 author: 'loading', category: 'loading', status: 'load_random' };
@@ -33,6 +33,9 @@ export class QuotePanoramaComponent implements OnInit {
 
     let serviceQuote: Quote;
     serviceQuote = this.sharedService.getQuote();
+    this.backgroundColorClass = this.sharedService.backgroundColorClass;
+    this.colorClass = this.backgroundColorClass + '-text';
+
     let loadedFromDirectLink = false;
     this.route.params.subscribe(params => {
        const quote_id = params['id'];

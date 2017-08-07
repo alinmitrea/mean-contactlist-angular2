@@ -16,6 +16,7 @@ export class SharedService {
   // Observable string streams
   currentQuote$ = this.currentQuote.asObservable();
   currentQuotesByCategory$ = this.currentQuotesByCategory.asObservable();
+  backgroundColorClass = 'nice-deep-sky-blue';
 
 
   publishQuote(currentQuote: Quote, quotesByCategory: Quote[]) {
