@@ -6,12 +6,15 @@
   h2 {
     font-size: 18px;
   }
+  h4 {
+    font-size: 14px;
+  }
   .parent-box {
-    padding-top: 20%;
+    padding-top: 5%;
     padding-bottom: 4%;
   }
   .quote-box-inner{
-    padding: 15px;
+    padding: 10px;
   }
   .quote-box {
     width: 95%;
@@ -26,6 +29,9 @@
   }
   h2 {
     font-size: 22px;
+  }
+  h4 {
+    font-size: 20px;
   }
   .parent-box {
     padding-top: 8%;
