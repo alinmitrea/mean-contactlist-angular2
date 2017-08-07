@@ -25,12 +25,10 @@
           [ngClass]="getMenuItemClasses(menuItem)">
         <a class="nav-item nav-link" [routerLink]="[menuItem.path]" routerLinkActive="active">{{menuItem.title}}</a>
       </li>
-
+      <li class="navbar-brand navbar-toggler-right">
+        <i class="fa fa-user-circle logo-size {{colorClass}}" data-toggle="modal" data-target="#loginForm"></i>
+      </li>
     </ul>
-    <ul class="nav-item navbar-brand navbar-toggler-right align-middle">
-      <i class="fa fa-user-circle logo-size {{colorClass}}" data-toggle="modal" data-target="#loginForm"></i>
-    </ul>
-
   </div>
 </nav>
 
