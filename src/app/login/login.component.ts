@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {SharedService} from '../shared.service';
+import {Login} from "../models/login";
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,17 @@ import {SharedService} from '../shared.service';
 })
 export class LoginComponent implements OnInit {
   colorClass: string;
-  email: string;
+  model = new Login('', '','');
   constructor(private sharedService: SharedService) {
     this.colorClass = this.sharedService.backgroundColorClass + '-text';
   }
-  public isValidMailFormat() {
+  public isMailInvalid() {
     const EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
-    if (this.email !== '' && (this.email.length <= 5 || !EMAIL_REGEXP.test(this.email))) {
+    if (this.model.email !== '' && (this.model.email.length <= 5 || !EMAIL_REGEXP.test(this.model.email))) {
       return { 'Please provide a valid email': true };
     }
-
-    return null;
+    return false;
   }
   ngOnInit() {
   }
