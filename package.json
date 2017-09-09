@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@types/core-js": "^0.9.43",
-    "@types/jasmine": "^2.5.38",
+    "@types/jasmine": "^2.5.54",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
