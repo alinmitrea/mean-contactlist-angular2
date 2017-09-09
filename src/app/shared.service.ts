@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
-import {Quote} from "./quotes/quote";
+import {Quote} from "./models/quote";
 
 
 @Injectable()

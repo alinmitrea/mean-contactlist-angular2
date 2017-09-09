@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import {SharedService} from '../shared.service';
 import {Login} from "../models/login";
 

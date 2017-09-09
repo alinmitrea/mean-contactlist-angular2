@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Quote } from './quote';
+import { Quote } from '../models/quote';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import {Category} from "./category";
+import {Category} from "../models/category";
 
 @Injectable()
 export class QuoteService {

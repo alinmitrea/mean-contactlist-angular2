@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './navbar-routes.config';
 import { MenuType } from './navbar.metadata';
 import {SharedService} from "../shared.service";
-import {Quote} from "../quotes/quote";
+import {Quote} from "../models/quote";
 
 @Component({
   selector: 'navbar',

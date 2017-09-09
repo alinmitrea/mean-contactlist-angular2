@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from '../../shared.service';
-import {Quote} from '../quote';
+import {Quote} from '../../models/quote';
 import {QuoteService} from '../quote.service';
-import {Category} from "../category";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-quote-category',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Quote} from '../quote';
+import { Quote} from '../../models/quote';
 import { QuoteService } from '../quote.service';
 import { SharedService } from '../../shared.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
