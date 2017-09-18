@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from '../shared.service';
-import {Login} from "../models/login";
+import {SharedService} from '../../services/shared.service';
+import {Login} from "../../models/login";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', './../app.component.css']
+  styleUrls: ['./login.component.css', '../../app.component.css']
 })
 export class LoginComponent implements OnInit {
   colorClass: string;

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from '../../shared.service';
-import {Quote} from '../../models/quote';
-import {QuoteService} from '../quote.service';
-import {Category} from "../../models/category";
+import {SharedService} from '../../../services/shared.service';
+import {Quote} from '../../../models/quote';
+import {QuoteService} from '../../../services/quote.service';
+import {Category} from "../../../models/category";
 
 @Component({
   selector: 'app-quote-category',
   templateUrl: './quote-category.component.html',
-  styleUrls: ['./quote-category.component.css', './../../app.component.css'],
+  styleUrls: ['./quote-category.component.css', './../../../app.component.css'],
   providers: [QuoteService]
 })
 export class QuoteCategoryComponent implements OnInit {

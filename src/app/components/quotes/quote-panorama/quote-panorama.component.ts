@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Quote} from '../../models/quote';
-import { QuoteService } from '../quote.service';
-import { SharedService } from '../../shared.service';
+import { Quote} from '../../../models/quote';
+import { QuoteService } from '../../../services/quote.service';
+import { SharedService } from '../../../services/shared.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quote-panorama',
   templateUrl: './quote-panorama.component.html',
-  styleUrls: ['./quote-panorama.component.css', './quote-panorama.card-style.css', './../../app.component.css'],
+  styleUrls: ['./quote-panorama.component.css', './quote-panorama.card-style.css', './../../../app.component.css'],
   providers: [QuoteService]
 })
 export class QuotePanoramaComponent implements OnInit {

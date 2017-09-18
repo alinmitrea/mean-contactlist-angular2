@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './navbar-routes.config';
 import { MenuType } from './navbar.metadata';
-import {SharedService} from "../shared.service";
-import {Quote} from "../models/quote";
+import {SharedService} from '../../services/shared.service';
+import {Quote} from '../../models/quote';
 
 @Component({
   selector: 'navbar',
   templateUrl: 'navbar.component.html',
-  styleUrls: [ 'navbar.component.css', './../app.component.css']
+  styleUrls: [ 'navbar.component.css', './../../app.component.css']
 })
 export class NavbarComponent implements OnInit {
   colorClass = 'nice-deep-sky-blue-text';

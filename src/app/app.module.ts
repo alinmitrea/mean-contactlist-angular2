@@ -6,11 +6,11 @@ import { EditorModule, SharedModule, RadioButtonModule } from 'primeng/primeng';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { QuotePanoramaComponent } from './quotes/quote-panorama/quote-panorama.component';
-import { SharedService } from './shared.service';
-import { QuoteCategoryComponent } from './quotes/quote-category/quote-category.component';
-import { NavbarModule } from './navbar';
-import { LoginComponent } from './login/login.component';
+import { QuotePanoramaComponent } from './components/quotes/quote-panorama/quote-panorama.component';
+import { SharedService } from './services/shared.service';
+import { QuoteCategoryComponent } from './components/quotes/quote-category/quote-category.component';
+import { NavbarModule } from './components/navbar';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
